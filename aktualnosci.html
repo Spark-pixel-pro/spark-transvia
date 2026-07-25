@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt — TransVia Logistics</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%2312294D%22/><path d=%22M8 8L12 12L8 16%22 stroke=%22%23E8792C%22 stroke-width=%222.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22/><path d=%22M13 8L17 12L13 16%22 stroke=%22%23F2F2F2%22 stroke-width=%222.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22 opacity=%220.7%22/></svg>">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .info-item { display: flex; gap: 14px; margin-bottom: 20px; }
+  .info-item .icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(232,121,44,0.1); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .info-item h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 3px; }
+  .info-item p { font-size: 0.87rem; color: var(--ink-muted); }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo-mark">
+    <div class="logo-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M8 8L12 12L8 16" stroke="#E8792C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 8L17 12L13 16" stroke="#F2F2F2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/></svg></div>
+    TransVia Logistics
+  </a>
+  <div class="links">
+    <a href="index.html">Strona główna</a><a href="uslugi.html">Oferta</a><a href="o-nas.html">O firmie</a>
+    <a href="aktualnosci.html">Aktualności</a><a href="dla-przewoznika.html">Dla przewoźnika</a>
+    <a href="kariera.html">Kariera</a><a href="kontakt.html" class="active">Kontakt</a>
+  </div>
+  <a href="kontakt.html" class="nav-cta">Wyceń transport</a>
+  <button class="nav-burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Strona główna</a><a href="uslugi.html">Oferta</a><a href="o-nas.html">O firmie</a>
+  <a href="aktualnosci.html">Aktualności</a><a href="dla-przewoznika.html">Dla przewoźnika</a>
+  <a href="kariera.html">Kariera</a><a href="kontakt.html">Kontakt</a>
+</div>
+
+<section class="page-hero">
+  <div class="eyebrow">Kontakt</div>
+  <h1>Porozmawiajmy o Twoim transporcie</h1>
+  <p>Napisz, zadzwoń, albo porozmawiaj ze Sparkiem — naszym asystentem AI dostępnym 24/7.</p>
+</section>
+
+<section class="section">
+  <div class="contact-grid">
+    <div>
+      <div class="info-item"><div class="icon">📍</div><div><h4>Adres</h4><p>ul. Portowa 12, 80-000 Gdańsk</p></div></div>
+      <div class="info-item"><div class="icon">📞</div><div><h4>Telefon</h4><p>+48 58 123 45 67</p></div></div>
+      <div class="info-item"><div class="icon">✉️</div><div><h4>Email</h4><p>kontakt@transvialogistics.pl</p></div></div>
+      <div class="info-item"><div class="icon">🕐</div><div><h4>Godziny pracy</h4><p>Pon–Pt: 8:00–17:00 · Spark dostępny 24/7</p></div></div>
+      <button class="btn-primary" onclick="sparkOtworz()" style="margin-top:10px;">Porozmawiaj ze Sparkiem teraz</button>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:18px;">Wyślij zapytanie</h3>
+      <div class="form-field"><label>Imię i nazwisko</label><input type="text" placeholder="Jan Kowalski"></div>
+      <div class="form-field"><label>Email</label><input type="email" placeholder="jan@firma.pl"></div>
+      <div class="form-field"><label>Wiadomość</label><textarea rows="4" placeholder="Opisz swoje zapytanie transportowe..."></textarea></div>
+      <button class="btn-primary" style="width:100%;" onclick="alert('W prawdziwym wdrożeniu tutaj wysyłałoby to zapytanie do Sparka lub e-mailem.')">Wyślij wiadomość</button>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 TransVia Logistics. Wszelkie prawa zastrzeżone.</footer>
+<script src="spark-widget.js"></script>
+</body>
+</html>

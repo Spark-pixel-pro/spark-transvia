@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TransVia Logistics — Transport i spedycja</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%2312294D%22/><path d=%22M4 12L10 6M4 12L10 18M4 12H20%22 stroke=%22%23E8792C%22 stroke-width=%222.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%2312294D%22/><path d=%22M8 8L12 12L8 16%22 stroke=%22%23E8792C%22 stroke-width=%222.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22/><path d=%22M13 8L17 12L13 16%22 stroke=%22%23F2F2F2%22 stroke-width=%222.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22 opacity=%220.7%22/></svg>">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -19,9 +19,7 @@
   }
   body {
     font-family: 'Inter', -apple-system, "Segoe UI", Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--ink);
-    line-height: 1.5;
+    background: var(--bg); color: var(--ink); line-height: 1.5;
   }
   a { text-decoration: none; color: inherit; }
 
@@ -37,16 +35,13 @@
   }
   .logo-mark { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.15rem; letter-spacing: -0.3px; }
   .logo-badge {
-    width: 34px; height: 34px; border-radius: 8px; background: var(--navy);
+    width: 36px; height: 36px; border-radius: 9px; background: var(--navy);
     display: flex; align-items: center; justify-content: center;
   }
-  .logo-badge svg { width: 20px; height: 20px; }
+  .logo-badge svg { width: 22px; height: 22px; }
   nav .links { display: flex; gap: 32px; font-size: 0.9rem; font-weight: 500; color: var(--ink-muted); }
   nav .links a:hover { color: var(--navy); }
-  .nav-cta {
-    background: var(--orange); color: white; padding: 10px 20px; border-radius: 8px;
-    font-weight: 600; font-size: 0.88rem;
-  }
+  .nav-cta { background: var(--orange); color: white; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 0.88rem; }
   .nav-burger { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
   .nav-burger span { width: 22px; height: 2px; background: var(--navy); }
   .mobile-menu { display: none; flex-direction: column; gap: 4px; padding: 16px 48px; background: white; border-bottom: 1px solid var(--line); }
@@ -58,13 +53,16 @@
     padding: 84px 48px 0; background: var(--navy-deep);
     color: white; position: relative; overflow: hidden;
   }
-  .hero-inner { max-width: 620px; position: relative; z-index: 2; padding-bottom: 60px; }
-  .hero .eyebrow {
-    font-size: 0.78rem; font-weight: 600; letter-spacing: 2px; color: var(--orange);
-    text-transform: uppercase; margin-bottom: 18px;
+  #heroCanvas {
+    position: absolute; top: 0; right: 0; width: 60%; height: 100%;
+    z-index: 1; cursor: grab; opacity: 0.9;
   }
+  #heroCanvas:active { cursor: grabbing; }
+  .hero-inner { max-width: 560px; position: relative; z-index: 2; padding-bottom: 60px; pointer-events: none; }
+  .hero-inner * { pointer-events: auto; }
+  .hero .eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 2px; color: var(--orange); text-transform: uppercase; margin-bottom: 18px; }
   .hero h1 { font-size: 2.9rem; font-weight: 700; line-height: 1.14; letter-spacing: -1.2px; margin-bottom: 20px; }
-  .hero p { font-size: 1.05rem; color: #C3CCDC; max-width: 500px; margin-bottom: 32px; }
+  .hero p { font-size: 1.05rem; color: #C3CCDC; max-width: 480px; margin-bottom: 32px; }
   .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
   .btn-primary {
     background: var(--orange); color: white; padding: 14px 26px; border-radius: 10px;
@@ -76,9 +74,13 @@
     background: transparent; color: white; padding: 14px 26px; border-radius: 10px;
     font-weight: 600; font-size: 0.95rem; border: 1.5px solid rgba(255,255,255,0.25); cursor: pointer;
   }
+  .hero-hint {
+    font-size: 0.72rem; color: rgba(255,255,255,0.35); margin-top: 10px;
+    position: relative; z-index: 2;
+  }
 
-  /* TRACKER — sygnatura wizualna */
-  .tracker-wrap { position: relative; z-index: 2; padding: 0 0 44px; }
+  /* TRACKER */
+  .tracker-wrap { position: relative; z-index: 2; padding: 0 0 44px; pointer-events: none; }
   .tracker { display: flex; align-items: center; max-width: 720px; }
   .tracker-step { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; }
   .tracker-step .dot {
@@ -94,44 +96,27 @@
     0%, 100% { box-shadow: 0 0 0 6px rgba(232,121,44,0.25); }
     50% { box-shadow: 0 0 0 10px rgba(232,121,44,0.1); }
   }
-  .tracker-line {
-    position: absolute; top: 6px; left: 50%; width: 100%; height: 2px;
-    background: rgba(255,255,255,0.15); z-index: 1;
-  }
+  .tracker-line { position: absolute; top: 6px; left: 50%; width: 100%; height: 2px; background: rgba(255,255,255,0.15); z-index: 1; }
   .tracker-step:last-child .tracker-line { display: none; }
   .tracker-step.done .tracker-line, .tracker-step.active .tracker-line { background: var(--orange); }
   .tracker-label { font-size: 0.74rem; color: #94A3B8; margin-top: 10px; text-align: center; max-width: 90px; }
   .tracker-step.done .tracker-label, .tracker-step.active .tracker-label { color: #E4E9F2; }
 
-  .route-line { position: absolute; top: 0; right: -8%; width: 55%; height: 100%; z-index: 1; opacity: 0.85; }
-
   /* TRUST BAR */
-  .trust-bar {
-    background: white; border-bottom: 1px solid var(--line);
-    padding: 24px 48px; display: flex; align-items: center; gap: 40px; overflow-x: auto;
-  }
+  .trust-bar { background: white; border-bottom: 1px solid var(--line); padding: 24px 48px; display: flex; align-items: center; gap: 40px; overflow-x: auto; }
   .trust-bar .label { font-size: 0.75rem; color: var(--ink-muted); font-weight: 600; letter-spacing: 1px; white-space: nowrap; text-transform: uppercase; }
   .trust-bar .partner { font-weight: 700; font-size: 1rem; color: #B7C0CC; white-space: nowrap; letter-spacing: -0.3px; }
 
   /* SERVICES */
   .section { padding: 84px 48px; max-width: 1180px; margin: 0 auto; }
   .section-head { margin-bottom: 44px; }
-  .section-head .eyebrow {
-    font-size: 0.78rem; font-weight: 600; letter-spacing: 1.5px; color: var(--orange);
-    text-transform: uppercase; margin-bottom: 10px;
-  }
+  .section-head .eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 1.5px; color: var(--orange); text-transform: uppercase; margin-bottom: 10px; }
   .section-head h2 { font-size: 2.1rem; font-weight: 700; letter-spacing: -0.6px; }
 
   .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .service-card {
-    background: white; border: 1px solid var(--line); border-radius: 14px; padding: 26px 22px;
-    transition: border-color 0.2s ease, transform 0.2s ease;
-  }
+  .service-card { background: white; border: 1px solid var(--line); border-radius: 14px; padding: 26px 22px; transition: border-color 0.2s ease, transform 0.2s ease; }
   .service-card:hover { border-color: var(--orange); transform: translateY(-3px); }
-  .service-card .icon-wrap {
-    width: 42px; height: 42px; border-radius: 10px; background: rgba(232,121,44,0.1);
-    display: flex; align-items: center; justify-content: center; margin-bottom: 18px; font-size: 20px;
-  }
+  .service-card .icon-wrap { width: 42px; height: 42px; border-radius: 10px; background: rgba(232,121,44,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; font-size: 20px; }
   .service-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
   .service-card p { font-size: 0.88rem; color: var(--ink-muted); }
 
@@ -144,10 +129,7 @@
   /* CONTACT */
   .contact { background: var(--navy-deep); color: white; }
   .contact .section-head h2 { color: white; }
-  .contact-box {
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px; padding: 40px; max-width: 560px;
-  }
+  .contact-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 40px; max-width: 560px; }
   .contact-box p { color: #C3CCDC; margin-bottom: 24px; }
 
   footer { padding: 32px 48px; text-align: center; font-size: 0.85rem; color: var(--ink-muted); background: white; }
@@ -158,59 +140,41 @@
     nav .links { display: none; }
     .nav-burger { display: flex; }
     .tracker-label { display: none; }
+    #heroCanvas { width: 100%; opacity: 0.35; }
   }
 
-  /* ==== CHAT WIDGET ==== */
+  /* CHAT WIDGET */
   #sparkBubble {
-    position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px;
-    border-radius: 50%; background: var(--orange); border: none; cursor: pointer;
-    box-shadow: 0 8px 24px rgba(232,121,44,0.4); z-index: 200;
-    display: flex; align-items: center; justify-content: center; font-size: 26px;
+    position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px; border-radius: 50%;
+    background: var(--orange); border: none; cursor: pointer; box-shadow: 0 8px 24px rgba(232,121,44,0.4);
+    z-index: 200; display: flex; align-items: center; justify-content: center; font-size: 26px;
     transition: transform 0.15s ease;
   }
   #sparkBubble:hover { transform: scale(1.06); }
   #sparkPanel {
     position: fixed; bottom: 96px; right: 24px; width: 360px; max-width: calc(100vw - 32px);
-    height: 520px; max-height: calc(100vh - 140px);
-    background: white; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-    display: none; flex-direction: column; overflow: hidden; z-index: 200;
+    height: 520px; max-height: calc(100vh - 140px); background: white; border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25); display: none; flex-direction: column; overflow: hidden; z-index: 200;
   }
   #sparkPanel.open { display: flex; }
-  .spark-panel-header {
-    background: var(--navy); color: white; padding: 16px 18px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
+  .spark-panel-header { background: var(--navy); color: white; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; }
   .spark-panel-header .h-title { font-weight: 600; font-size: 0.95rem; }
   .spark-panel-header .h-sub { font-size: 0.75rem; color: #A9B7CC; }
   .spark-close { background: none; border: none; color: white; font-size: 20px; cursor: pointer; opacity: 0.7; }
-
   .spark-mode-toggle { display: flex; border-bottom: 1px solid var(--line); }
-  .spark-mode-btn {
-    flex: 1; padding: 10px; text-align: center; font-size: 0.82rem; font-weight: 600;
-    background: none; border: none; cursor: pointer; color: var(--ink-muted);
-    border-bottom: 2px solid transparent;
-  }
+  .spark-mode-btn { flex: 1; padding: 10px; text-align: center; font-size: 0.82rem; font-weight: 600; background: none; border: none; cursor: pointer; color: var(--ink-muted); border-bottom: 2px solid transparent; }
   .spark-mode-btn.active { color: var(--navy); border-bottom-color: var(--orange); }
-
   .spark-body { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
   .spark-chat-log { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
   .spark-bubble { padding: 10px 14px; border-radius: 12px; font-size: 0.88rem; max-width: 85%; line-height: 1.4; }
   .spark-bubble.user { background: var(--orange); color: white; align-self: flex-end; }
   .spark-bubble.bot { background: #F1F3F6; color: var(--ink); align-self: flex-start; }
   .spark-input-row { display: flex; gap: 8px; padding: 12px; border-top: 1px solid var(--line); }
-  .spark-input-row input {
-    flex: 1; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 0.88rem;
-  }
-  .spark-input-row button {
-    background: var(--navy); color: white; border: none; border-radius: 8px; padding: 0 16px; cursor: pointer;
-  }
-
+  .spark-input-row input { flex: 1; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 0.88rem; }
+  .spark-input-row button { background: var(--navy); color: white; border: none; border-radius: 8px; padding: 0 16px; cursor: pointer; }
   .spark-voice-view { flex: 1; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 20px; }
   .spark-voice-view.active { display: flex; }
-  .spark-mic-btn {
-    width: 74px; height: 74px; border-radius: 50%; background: var(--navy); border: none;
-    cursor: pointer; font-size: 28px; color: white; display: flex; align-items: center; justify-content: center;
-  }
+  .spark-mic-btn { width: 74px; height: 74px; border-radius: 50%; background: var(--navy); border: none; cursor: pointer; font-size: 28px; color: white; display: flex; align-items: center; justify-content: center; }
   .spark-mic-btn.listening { background: var(--orange); }
   .spark-voice-status { font-size: 0.82rem; color: var(--ink-muted); text-align: center; }
 </style>
@@ -220,7 +184,10 @@
 <nav>
   <div class="logo-mark">
     <div class="logo-badge">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M4 12L10 6M4 12L10 18M4 12H20" stroke="#E8792C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M8 8L12 12L8 16" stroke="#E8792C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M13 8L17 12L13 16" stroke="#F2F2F2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+      </svg>
     </div>
     TransVia Logistics
   </div>
@@ -241,11 +208,7 @@
 </div>
 
 <section class="hero">
-  <svg class="route-line" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,350 Q150,300 220,200 T480,50" fill="none" stroke="#E8792C" stroke-width="2" stroke-dasharray="6 8" opacity="0.6"/>
-    <circle cx="0" cy="350" r="5" fill="#E8792C"/>
-    <circle cx="480" cy="50" r="5" fill="#E8792C"/>
-  </svg>
+  <canvas id="heroCanvas"></canvas>
   <div class="hero-inner">
     <div class="eyebrow">Transport — Spedycja — Logistyka</div>
     <h1>Zawsze bezpiecznie trafiamy do celu</h1>
@@ -254,6 +217,7 @@
       <button class="btn-primary" onclick="sparkOtworz()">Zapytaj Sparka o wycenę</button>
       <a href="#uslugi" class="btn-secondary">Zobacz ofertę</a>
     </div>
+    <div class="hero-hint">Przeciągnij, by obrócić sieć połączeń →</div>
   </div>
   <div class="tracker-wrap">
     <div class="tracker">
@@ -281,26 +245,10 @@
     <h2>Transport dopasowany do Twojego ładunku</h2>
   </div>
   <div class="services-grid">
-    <div class="service-card">
-      <div class="icon-wrap">🚚</div>
-      <h3>Transport drogowy</h3>
-      <p>Własny tabor i sieć podwykonawców w Polsce, UE i poza nią.</p>
-    </div>
-    <div class="service-card">
-      <div class="icon-wrap">🚢</div>
-      <h3>Transport morski</h3>
-      <p>Współpraca z globalnymi armatorami, przewozy kontenerowe.</p>
-    </div>
-    <div class="service-card">
-      <div class="icon-wrap">✈️</div>
-      <h3>Transport lotniczy</h3>
-      <p>Szybka dostawa do dowolnego miejsca na świecie.</p>
-    </div>
-    <div class="service-card">
-      <div class="icon-wrap">📋</div>
-      <h3>Agencja celna</h3>
-      <p>Pełna obsługa formalności celnych i dokumentacji.</p>
-    </div>
+    <div class="service-card"><div class="icon-wrap">🚚</div><h3>Transport drogowy</h3><p>Własny tabor i sieć podwykonawców w Polsce, UE i poza nią.</p></div>
+    <div class="service-card"><div class="icon-wrap">🚢</div><h3>Transport morski</h3><p>Współpraca z globalnymi armatorami, przewozy kontenerowe.</p></div>
+    <div class="service-card"><div class="icon-wrap">✈️</div><h3>Transport lotniczy</h3><p>Szybka dostawa do dowolnego miejsca na świecie.</p></div>
+    <div class="service-card"><div class="icon-wrap">📋</div><h3>Agencja celna</h3><p>Pełna obsługa formalności celnych i dokumentacji.</p></div>
   </div>
 </section>
 
@@ -332,15 +280,10 @@
 
 <footer>© 2026 TransVia Logistics. Wszelkie prawa zastrzeżone.</footer>
 
-<!-- ===== WIDGET SPARK ===== -->
 <button id="sparkBubble" onclick="sparkOtworz()">💬</button>
-
 <div id="sparkPanel">
   <div class="spark-panel-header">
-    <div>
-      <div class="h-title">Spark — TransVia</div>
-      <div class="h-sub">Asystent AI, dostępny 24/7</div>
-    </div>
+    <div><div class="h-title">Spark — TransVia</div><div class="h-sub">Asystent AI, dostępny 24/7</div></div>
     <button class="spark-close" onclick="sparkZamknij()">✕</button>
   </div>
   <div class="spark-mode-toggle">
@@ -360,16 +303,105 @@
   </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script>
-const EDGE_FUNCTION_URL = "https://kmxmgxiobhcovrvvcdqh.supabase.co/functions/v1/bright-api";
-const SUPABASE_ANON_KEY = "sb_publishable_FiS3WrWInHeqakBWl8mr6A_aVC4IJ32";
+// ===== 3D SIEĆ LOGISTYCZNA W HERO =====
+(function() {
+  const canvas = document.getElementById('heroCanvas');
+  const hero = document.querySelector('.hero');
+  const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
+  camera.position.z = 5.2;
 
-let historiaRozmowy = [];
+  function resize() {
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
 
+  const globeGeo = new THREE.IcosahedronGeometry(1.8, 2);
+  const edges = new THREE.EdgesGeometry(globeGeo);
+  const globeMat = new THREE.LineBasicMaterial({ color: 0x2A4A78, transparent: true, opacity: 0.55 });
+  const globe = new THREE.LineSegments(edges, globeMat);
+  scene.add(globe);
+
+  const dotsGeo = new THREE.BufferGeometry();
+  const dotCount = 220;
+  const positions = new Float32Array(dotCount * 3);
+  for (let i = 0; i < dotCount; i++) {
+    const v = new THREE.Vector3().randomDirection().multiplyScalar(1.8);
+    positions[i*3] = v.x; positions[i*3+1] = v.y; positions[i*3+2] = v.z;
+  }
+  dotsGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  const dotsMat = new THREE.PointsMaterial({ color: 0xE8792C, size: 0.035, transparent: true, opacity: 0.85 });
+  const dots = new THREE.Points(dotsGeo, dotsMat);
+  scene.add(dots);
+
+  function randomPointOnSphere(r) {
+    return new THREE.Vector3().randomDirection().multiplyScalar(r);
+  }
+
+  const routeGroup = new THREE.Group();
+  scene.add(routeGroup);
+  const routes = [];
+  for (let i = 0; i < 4; i++) {
+    const a = randomPointOnSphere(1.8);
+    const b = randomPointOnSphere(1.8);
+    const mid = a.clone().add(b).normalize().multiplyScalar(2.5);
+    const curve = new THREE.QuadraticBezierCurve3(a, mid, b);
+    const pts = curve.getPoints(40);
+    const geo = new THREE.BufferGeometry().setFromPoints(pts);
+    const mat = new THREE.LineBasicMaterial({ color: 0xE8792C, transparent: true, opacity: 0.35 });
+    const line = new THREE.Line(geo, mat);
+    routeGroup.add(line);
+
+    const shipGeo = new THREE.SphereGeometry(0.045, 8, 8);
+    const shipMat = new THREE.MeshBasicMaterial({ color: 0xFFD600 });
+    const ship = new THREE.Mesh(shipGeo, shipMat);
+    routeGroup.add(ship);
+    routes.push({ curve: curve, mesh: ship, offset: Math.random() });
+  }
+
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableZoom = false;
+  controls.enablePan = false;
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.06;
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 0.5;
+
+  let t = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    t += 0.0035;
+    routes.forEach(r => {
+      const progress = (t + r.offset) % 1;
+      const p = r.curve.getPoint(progress);
+      r.mesh.position.copy(p);
+    });
+    dots.rotation.y += 0.0006;
+    controls.update();
+    renderer.render(scene, camera);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  animate();
+})();
+
+// ===== REVEAL NA SCROLL =====
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ===== WIDGET SPARK =====
+const EDGE_FUNCTION_URL = "https://kmxmgxiobhcovrvvcdqh.supabase.co/functions/v1/bright-api";
+const SUPABASE_ANON_KEY = "sb_publishable_FiS3WrWInHeqakBWl8mr6A_aVC4IJ32";
+let historiaRozmowy = [];
 
 function sparkOtworz() { document.getElementById('sparkPanel').classList.add('open'); }
 function sparkZamknij() { document.getElementById('sparkPanel').classList.remove('open'); }
@@ -394,11 +426,7 @@ async function wyslijDoSparka(wiadomosc) {
   try {
     const response = await fetch(EDGE_FUNCTION_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + SUPABASE_ANON_KEY,
-        "apikey": SUPABASE_ANON_KEY
-      },
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + SUPABASE_ANON_KEY, "apikey": SUPABASE_ANON_KEY },
       body: JSON.stringify({ wiadomosc: wiadomosc, tryb: "klient", historia: historiaRozmowy })
     });
     const data = await response.json();
@@ -430,7 +458,6 @@ if (SpeechRecognition) {
   recognition.lang = 'pl-PL';
   recognition.continuous = false;
   recognition.interimResults = true;
-
   let listening = false, przetworzone = false, ostatniTekst = '', timerCiszy = null;
 
   micBtn.addEventListener('click', () => {

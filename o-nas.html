@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O firmie — TransVia Logistics</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%2312294D%22/><path d=%22M8 8L12 12L8 16%22 stroke=%22%23E8792C%22 stroke-width=%222.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22/><path d=%22M13 8L17 12L13 16%22 stroke=%22%23F2F2F2%22 stroke-width=%222.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22 opacity=%220.7%22/></svg>">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .anchor-nav { background: white; border-bottom: 1px solid var(--line); padding: 0 48px; display: flex; gap: 4px; overflow-x: auto; position: sticky; top: 65px; z-index: 40; }
+  .anchor-nav a { padding: 16px 14px; font-size: 0.84rem; font-weight: 600; color: var(--ink-muted); white-space: nowrap; }
+  .anchor-nav a:hover { color: var(--navy); }
+  .block { scroll-margin-top: 130px; padding: 50px 0; border-bottom: 1px solid var(--line); }
+  .block:last-child { border-bottom: none; }
+  .block h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 14px; }
+  .block p { color: var(--ink-muted); font-size: 0.95rem; margin-bottom: 12px; max-width: 700px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo-mark">
+    <div class="logo-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M8 8L12 12L8 16" stroke="#E8792C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 8L17 12L13 16" stroke="#F2F2F2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/></svg></div>
+    TransVia Logistics
+  </a>
+  <div class="links">
+    <a href="index.html">Strona główna</a><a href="uslugi.html">Oferta</a><a href="o-nas.html" class="active">O firmie</a>
+    <a href="aktualnosci.html">Aktualności</a><a href="dla-przewoznika.html">Dla przewoźnika</a>
+    <a href="kariera.html">Kariera</a><a href="kontakt.html">Kontakt</a>
+  </div>
+  <a href="kontakt.html" class="nav-cta">Wyceń transport</a>
+  <button class="nav-burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Strona główna</a><a href="uslugi.html">Oferta</a><a href="o-nas.html">O firmie</a>
+  <a href="aktualnosci.html">Aktualności</a><a href="dla-przewoznika.html">Dla przewoźnika</a>
+  <a href="kariera.html">Kariera</a><a href="kontakt.html">Kontakt</a>
+</div>
+
+<section class="page-hero">
+  <div class="eyebrow">O firmie</div>
+  <h1>16 lat doświadczenia w spedycji</h1>
+  <p>Zespół specjalistów logistyki, dla których terminowość i bezpieczeństwo ładunku to podstawa.</p>
+</section>
+
+<div class="anchor-nav">
+  <a href="#misja">Misja i wizja</a><a href="#jakosc">Polityka jakości</a><a href="#csr">CSR</a>
+</div>
+
+<main style="max-width:900px;margin:0 auto;padding:0 48px;">
+  <div class="block" id="misja">
+    <h2>Misja i wizja</h2>
+    <p>Naszą misją jest zapewnienie klientom kompleksowych, elastycznych rozwiązań transportowych, które łączą globalny zasięg z indywidualnym podejściem do każdego zlecenia.</p>
+    <p>Chcemy być pierwszym wyborem dla firm, które cenią przewidywalność, przejrzystą komunikację i realne wsparcie na każdym etapie transportu — od pierwszej wyceny po dostawę.</p>
+  </div>
+  <div class="block" id="jakosc">
+    <h2>Polityka jakości</h2>
+    <p>Pracujemy w oparciu o wewnętrzne standardy jakości, regularnie weryfikowane w audytach. Każde zlecenie jest monitorowane na bieżąco, a nasz zespół dba o zgodność z wymaganiami formalnymi na każdym etapie.</p>
+    <p>Inwestujemy w nowoczesną flotę i systemy śledzenia przesyłek, żeby ograniczać ryzyko opóźnień i strat.</p>
+  </div>
+  <div class="block" id="csr">
+    <h2>CSR — odpowiedzialność społeczna</h2>
+    <p>Dążymy do ograniczania śladu środowiskowego naszej działalności — promujemy transport kolejowy i morski tam, gdzie to możliwe, oraz optymalizujemy trasy, by zmniejszyć zużycie paliwa.</p>
+    <p>Wspieramy lokalne inicjatywy w regionach, w których działamy, i dbamy o uczciwe warunki współpracy z podwykonawcami.</p>
+  </div>
+</main>
+
+<footer>© 2026 TransVia Logistics. Wszelkie prawa zastrzeżone.</footer>
+<script src="spark-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dla przewoźnika — TransVia Logistics</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%2312294D%22/><path d=%22M8 8L12 12L8 16%22 stroke=%22%23E8792C%22 stroke-width=%222.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22/><path d=%22M13 8L17 12L13 16%22 stroke=%22%23F2F2F2%22 stroke-width=%222.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22 opacity=%220.7%22/></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo-mark">
+    <div class="logo-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M8 8L12 12L8 16" stroke="#E8792C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 8L17 12L13 16" stroke="#F2F2F2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/></svg></div>
+    TransVia Logistics
+  </a>
+  <div class="links">
+    <a href="index.html">Strona główna</a><a href="uslugi.html">Oferta</a><a href="o-nas.html">O firmie</a>
+    <a href="aktualnosci.html">Aktualności</a><a href="dla-przewoznika.html" class="active">Dla przewoźnika</a>
+    <a href="kariera.html">Kariera</a><a href="kontakt.html">Kontakt</a>
+  </div>
+  <a href="kontakt.html" class="nav-cta">Wyceń transport</a>
+  <button class="nav-burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Strona główna</a><a href="uslugi.html">Oferta</a><a href="o-nas.html">O firmie</a>
+  <a href="aktualnosci.html">Aktualności</a><a href="dla-przewoznika.html">Dla przewoźnika</a>
+  <a href="kariera.html">Kariera</a><a href="kontakt.html">Kontakt</a>
+</div>
+
+<section class="page-hero">
+  <div class="eyebrow">Dla przewoźnika</div>
+  <h1>Zostań naszym partnerem transportowym</h1>
+  <p>Współpracujemy z siecią sprawdzonych przewoźników w całej Europie. Dołącz do grona naszych podwykonawców.</p>
+</section>
+
+<section class="section">
+  <div class="grid-3">
+    <div class="card"><div class="icon-wrap">💰</div><h3>Terminowe płatności</h3><p>Rozliczamy się zgodnie z ustalonymi terminami, bez opóźnień.</p></div>
+    <div class="card"><div class="icon-wrap">📦</div><h3>Stały dopływ zleceń</h3><p>Regularne trasy krajowe i międzynarodowe dopasowane do Twojej floty.</p></div>
+    <div class="card"><div class="icon-wrap">🤝</div><h3>Jasne zasady współpracy</h3><p>Przejrzyste umowy i wsparcie na każdym etapie realizacji zlecenia.</p></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="contact-box" style="background:white;border:1px solid var(--line);max-width:600px;">
+    <h2 style="margin-bottom:12px;">Zgłoś swoją flotę</h2>
+    <p style="color:var(--ink-muted);margin-bottom:20px;">Napisz do Sparka lub skontaktuj się z nami bezpośrednio, żeby dołączyć do sieci przewoźników TransVia.</p>
+    <button class="btn-primary" onclick="sparkOtworz()">Porozmawiaj ze Sparkiem</button>
+  </div>
+</section>
+
+<footer>© 2026 TransVia Logistics. Wszelkie prawa zastrzeżone.</footer>
+<script src="spark-widget.js"></script>
+</body>
+</html>

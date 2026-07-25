@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oferta — TransVia Logistics</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%2312294D%22/><path d=%22M8 8L12 12L8 16%22 stroke=%22%23E8792C%22 stroke-width=%222.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22/><path d=%22M13 8L17 12L13 16%22 stroke=%22%23F2F2F2%22 stroke-width=%222.2%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22 opacity=%220.7%22/></svg>">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .offer-nav { background: white; border-bottom: 1px solid var(--line); padding: 0 48px; display: flex; gap: 4px; overflow-x: auto; position: sticky; top: 65px; z-index: 40; }
+  .offer-nav a { padding: 16px 14px; font-size: 0.84rem; font-weight: 600; color: var(--ink-muted); white-space: nowrap; }
+  .offer-nav a:hover { color: var(--navy); }
+  main { max-width: 980px; margin: 0 auto; padding: 60px 48px; }
+  .offer-block { padding: 40px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 130px; }
+  .offer-block:last-child { border-bottom: none; }
+  .offer-block h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 12px; }
+  .offer-block p { color: var(--ink-muted); font-size: 0.95rem; max-width: 640px; margin-bottom: 16px; }
+  .offer-block ul { padding-left: 20px; color: var(--ink-muted); font-size: 0.92rem; }
+  .offer-block li { margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo-mark">
+    <div class="logo-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M8 8L12 12L8 16" stroke="#E8792C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 8L17 12L13 16" stroke="#F2F2F2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/></svg></div>
+    TransVia Logistics
+  </a>
+  <div class="links">
+    <a href="index.html">Strona główna</a><a href="uslugi.html" class="active">Oferta</a><a href="o-nas.html">O firmie</a>
+    <a href="aktualnosci.html">Aktualności</a><a href="dla-przewoznika.html">Dla przewoźnika</a>
+    <a href="kariera.html">Kariera</a><a href="kontakt.html">Kontakt</a>
+  </div>
+  <a href="kontakt.html" class="nav-cta">Wyceń transport</a>
+  <button class="nav-burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Strona główna</a><a href="uslugi.html">Oferta</a><a href="o-nas.html">O firmie</a>
+  <a href="aktualnosci.html">Aktualności</a><a href="dla-przewoznika.html">Dla przewoźnika</a>
+  <a href="kariera.html">Kariera</a><a href="kontakt.html">Kontakt</a>
+</div>
+
+<section class="page-hero">
+  <div class="eyebrow">Nasza oferta</div>
+  <h1>Kompleksowa spedycja i logistyka</h1>
+  <p>Osiem obszarów usług dopasowanych do rodzaju ładunku, trasy i budżetu.</p>
+</section>
+
+<div class="offer-nav">
+  <a href="#morski">Morski</a><a href="#drogowy">Drogowy</a><a href="#lotniczy">Lotniczy</a><a href="#kolejowy">Kolejowy</a>
+  <a href="#project-cargo">Project Cargo</a><a href="#logistyka">Logistyka kontraktowa</a><a href="#celna">Agencja celna</a><a href="#ubezpieczenia">Ubezpieczenia</a>
+</div>
+
+<main>
+  <div class="offer-block" id="morski">
+    <div class="icon-wrap">🚢</div><h2>Transport morski</h2>
+    <p>Współpraca z globalnymi armatorami i operatorami kontenerowymi.</p>
+    <ul><li>Przewozy FCL i LCL</li><li>Pakowanie i mocowanie ładunku</li><li>Obsługa portów w Europie i Azji</li></ul>
+  </div>
+  <div class="offer-block" id="drogowy">
+    <div class="icon-wrap">🚚</div><h2>Transport drogowy</h2>
+    <p>Własny tabor oraz rozbudowana sieć podwykonawców.</p>
+    <ul><li>Ładunki sypkie, ADR, kontrolowana temperatura</li><li>Obsługa branż: FMCG, AGD, chemia, maszyny</li><li>Śledzenie przesyłki na żywo</li></ul>
+  </div>
+  <div class="offer-block" id="lotniczy">
+    <div class="icon-wrap">✈️</div><h2>Transport lotniczy</h2>
+    <p>Odbiór od nadawcy i dostawa na miejsce docelowe.</p>
+    <ul><li>Sieć agentów na całym świecie</li><li>Przesyłki ekspresowe</li><li>Optymalny dobór trasy</li></ul>
+  </div>
+  <div class="offer-block" id="kolejowy">
+    <div class="icon-wrap">🚆</div><h2>Transport kolejowy</h2>
+    <p>Ekologiczna alternatywa dla dużych ładunków, w tym z Chin.</p>
+    <ul><li>Przewozy krajowe i międzynarodowe</li><li>Usługi przeładunkowe</li><li>Niska awaryjność</li></ul>
+  </div>
+  <div class="offer-block" id="project-cargo">
+    <div class="icon-wrap">🏗️</div><h2>Project Cargo</h2>
+    <p>Transport ładunków ponadgabarytowych i nietypowych.</p>
+    <ul><li>Indywidualna wycena i trasa</li><li>Pozwolenia ponadnormatywne</li><li>Koordynacja wielu środków transportu</li></ul>
+  </div>
+  <div class="offer-block" id="logistyka">
+    <div class="icon-wrap">📦</div><h2>Logistyka kontraktowa</h2>
+    <p>Długoterminowa obsługa magazynowa i dystrybucyjna.</p>
+    <ul><li>Magazynowanie i zapasy</li><li>Kompletacja zamówień</li><li>Dystrybucja ostatniej mili</li></ul>
+  </div>
+  <div class="offer-block" id="celna">
+    <div class="icon-wrap">📋</div><h2>Agencja celna</h2>
+    <p>Własna agencja celna — pełna obsługa formalności.</p>
+    <ul><li>Odprawy import/eksport</li><li>Doradztwo taryfowe</li><li>Obsługa tranzytu</li></ul>
+  </div>
+  <div class="offer-block" id="ubezpieczenia">
+    <div class="icon-wrap">🛡️</div><h2>Ubezpieczenia</h2>
+    <p>Ubezpieczenia CARGO na konkurencyjnych warunkach.</p>
+    <ul><li>Pełna ochrona krajowa i międzynarodowa</li><li>Elastyczne warunki</li><li>Szybka procedura szkodowa</li></ul>
+  </div>
+</main>
+
+<footer>© 2026 TransVia Logistics. Wszelkie prawa zastrzeżone.</footer>
+<script src="spark-widget.js"></script>
+</body>
+</html>
